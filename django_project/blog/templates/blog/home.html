@@ -1,8 +1,7 @@
 {%extends "blog/base.html" %}
 {% block content %}
 
-    {% for post in posts %}
-        <h1>{{post.title}}</h1>
-        <p> By {{post.author}} </p>
+    {% for i in response %}
+        <h1>Temporada {{i}}</h1>
     {% endfor %}
 {% endblock content %}
