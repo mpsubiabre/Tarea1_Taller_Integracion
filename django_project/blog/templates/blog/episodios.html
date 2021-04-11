@@ -1,0 +1,10 @@
+{%extends "blog/base.html" %}
+{% url 'episodios' as episodios%}
+{% block content %}
+    <h1>Temporada {{temporada}}</h1>
+    {% for i in response %}
+        <p><a href="detalle/{{i}}">{{i}}</a>
+    {% endfor %}
+
+
+{% endblock content %}

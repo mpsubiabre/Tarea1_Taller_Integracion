@@ -1,0 +1,15 @@
+{%extends "blog/base.html" %}
+{% url 'detalle' as detalle%}
+{% block content %}
+    <h1>Detalle Episodio : {{episodio}}</h1>
+    {% for i in response %}
+        <p>{{i}}</p>
+    {% endfor %}
+    <p>Personajes:</p>
+    {% for i in personajes %}
+        <p><a href="personaje/{{i}}">{{i}}</a></p>
+    {% endfor %}
+
+
+
+{% endblock content %}

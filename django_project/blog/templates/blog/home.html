@@ -1,7 +1,18 @@
 {%extends "blog/base.html" %}
+{% url 'episodios' as episodios%}
 {% block content %}
-
-    {% for i in response %}
-        <h1>Temporada {{i}}</h1>
+    <h1>Braking Bad</h1>
+    {% for i in bb %}
+    <p> <a href="episodiosbb/{{i}}">Temporada {{i}}</a>
+    </p>
     {% endfor %}
+    <h1>Better Call Saul</h1>
+    {% for i in bcs %}
+    <p><a href="episodiosbcs/{{i}}">Temporada {{i}}</a>
+    </p>
+
+    {% endfor %}
+
+
+
 {% endblock content %}

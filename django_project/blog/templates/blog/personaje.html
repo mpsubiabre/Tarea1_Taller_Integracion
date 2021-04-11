@@ -1,0 +1,33 @@
+{%extends "blog/base.html" %}
+{% url 'personaje' as personaje%}
+{% block content %}
+    <h1>Informacion personaje : {{personaje}}</h1>
+    <img class="img-fluid rounded mb-5" src={{img}} alt="" width="304" height="236"/>
+
+    <p>sobrenombre: {{nickname}}</p>
+    <p>Estado: {{status}}</p>
+    <p>Actor/Actriz: {{portrayed}}</p>
+    <p>Ocupacion:</p>
+    {%for i in occupation%}
+    <p>- {{i}}</p>
+    {% endfor %}
+    <p>Apariciones Braking Bad:</p>
+    {%for i in apparence%}
+    <p><a href="../episodiosbb/{{i}}">- Temporada {{i}}</p></a>
+    {% endfor %}
+
+    <p>Apariciones Better Call Saul:</p>
+    {%if better_call_saul_appearance %}
+
+        {%for i in better_call_saul_appearance%}
+            <p><a href="/episodiosbcs/{{i}}">- Temporada {{i}}</p></a>
+        {% endfor %}
+    {%endif%}
+    <p>Citas:</p>
+    {%if citas%}
+        {% for i in citas%}
+        <p>En {{i.series}}: {{i.quote}}</p>
+        {% endfor %}
+    {%endif%}
+
+{% endblock content %}
