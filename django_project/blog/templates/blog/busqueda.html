@@ -1,0 +1,17 @@
+{%extends "blog/base.html" %}
+{% url 'personaje' as personaje%}
+{% block content %}
+<h1>Busqueda por texto</h1>
+
+
+{% if todos%}
+    <h3>Personajes:</h3>
+    {% for i in todos%}
+        <a href="../personaje/{{i.name}}">{{i.name}}</a>
+        <br>
+    {%endfor%}
+{% else%}
+    <h3>No hay coincidencias</h3>
+{%endif%}
+
+{% endblock content %}

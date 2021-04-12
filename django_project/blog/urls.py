@@ -12,5 +12,9 @@ urlpatterns = [
 
     path('episodiosbb/detalle/personaje/<nombre>', views.personaje,name='personaje'),
     path('episodiosbcs/detalle/personaje/<nombre>', views.personaje,name='personaje'),
+    path('personaje/<nombre>', views.personaje,name='personaje'),
+
+    path('buscar/', views.buscar,name='buscar'),
+    path('buscar/personaje/<nombre>', views.personaje,name='personaje'),
 
 ]

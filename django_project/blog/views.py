@@ -94,6 +94,7 @@ def detalle(request, episodio):
 
 def personaje(request, nombre):
     print("entro a personajes")
+    print(nombre)
     response = requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/characters?name='+ nombre.replace(" ", "+")).json()
     citas = requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/quote?author='+ nombre.replace(" ", "+")).json()
     print(response)      
@@ -123,3 +124,23 @@ def personaje(request, nombre):
                     pass
 
     return render(request, 'blog/personaje.html', {'title': 'detalle', 'personaje': nombre, 'status': status, 'nickname':nickname, 'apparence':appearance,'portrayed':portrayed, 'category':category, 'better_call_saul_appearance':better_call_saul_appearance, 'occupation' : occupation, 'img':img, 'citas':citas})
+
+
+def buscar(request):
+    todos = []
+    srch = request.GET['buscando']
+    print(srch)
+    i = 0
+    if requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/characters?name='+srch+'&offset='+str(i)).status_code == 200:
+        response = requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/characters?name='+srch+'&offset='+str(i)).json()
+        while response:
+            for j in response:
+                todos.append(j)
+            i+=10 #paginacion
+            response = requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/characters?name='+srch+'&offset='+str(i)).json()
+            if requests.get('https://tarea-1-breaking-bad.herokuapp.com/api/characters?name='+srch+'&offset='+str(i)).status_code != 200:
+                break
+    print('REVISAR ACA')
+    print(todos)
+    print(request)
+    return render(request, 'blog/busqueda.html', {'todos': todos})
