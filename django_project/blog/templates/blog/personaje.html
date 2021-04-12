@@ -1,4 +1,4 @@
-{%extends "blog/base.html" %}
+{%extends "base.html" %}
 {% url 'personaje' as personaje%}
 {% block content %}
     <h1>Informacion personaje : {{personaje}}</h1>
@@ -13,7 +13,7 @@
     {% endfor %}
     <p>Apariciones Braking Bad:</p>
     {%for i in apparence%}
-    <p><a href="../episodiosbb/{{i}}">- Temporada {{i}}</p></a>
+    <p><a href="/episodiosbb/{{i}}">- Temporada {{i}}</p></a>
     {% endfor %}
 
     <p>Apariciones Better Call Saul:</p>
